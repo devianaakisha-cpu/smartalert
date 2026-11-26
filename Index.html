@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Classroom Alert System</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- ================= HTML SECTION ================= -->
+<body>
+<div class="page">
+
+  <header class="top">
+    <h1>Smart Classroom Alert System</h1>
+    <span class="pill" id="statusPill" data-state="demo">Demo mode</span>
+  </header>
+
+  <div class="banner" id="demoBanner">
+    Demo mode is on. Alerts are simulated in this page and nothing is sent to Firebase.
+    To use live data, set <strong>DEMO_MODE</strong> to <strong>false</strong> in the script.
+  </div>
+
+  <div>
+    <button class="btn primary" id="simulateBtn" type="button">Simulate alert</button>
+    <p class="note" id="demoNote" role="status"></p>
+  </div>
+
+  <section aria-labelledby="hActive">
+    <h2 id="hActive">Active alerts</h2>
+    <div class="active" id="activeAlerts" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="hStats">
+    <h2 id="hStats">Building status</h2>
+    <div class="stats">
+      <div class="stat"><span class="label">Active alerts</span><span class="value red" id="statActive">0</span></div>
+      <div class="stat"><span class="label">Acknowledged</span><span class="value teal" id="statAck">0</span></div>
+      <div class="stat"><span class="label">False alarms</span><span class="value" id="statFalse">0</span></div>
+      <div class="stat"><span class="label">Escalated</span><span class="value red" id="statEsc">0</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hHistory">
+    <h2 id="hHistory">Alert history</h2>
+    <ol class="history" id="historyLog"><li class="none">No alerts yet.</li></ol>
+  </section>
+</div>
+
+<!-- Firebase SDK (only used when DEMO_MODE is false) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<!-- JavaScript section -->
+<script src="script.js"></script>
+</body>
+</html>
